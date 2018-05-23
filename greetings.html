@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>My First React App</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
      <div id="app"></div>
@@ -16,14 +17,46 @@
                 return (
                     <div>
                         <h1>Hello World!</h1>
+
+                        <Calculator/>
                     </div>
                 )
             }
         }
 
-        ReactDOM.render(
-            <Greeting />, document.getElementById("app")
-        );
+        class Calculator extends React.Component {
+            render() {
+                var numbers = [];
+                for(let i = 0; i < 10; i++) {
+                    numbers.push(<span className="calc-button">{i}</span>);
+                }
+                let zero = numbers.shift();
+                numbers.push(<span className="calc-button">.</span>);
+                numbers.push(zero);
+                numbers.push(<span className="calc-button">=</span>);
+                let functionButtons = [
+                    <span className="calc-button">+</span>,
+                    <span className="calc-button">-</span>,
+                    <span className="calc-button">◄</span>,
+                    <span className="calc-button">C</span>,
+                    <span className="calc-button">×</span>,
+                    <span className="calc-button">÷</span>,
+                    <span className="calc-button">%</span>,
+                    <span className="calc-button">√</span>
+                ];
+                numbers.unshift(functionButtons);
+                return (
+                    <div className="calc-body">
+                        <div className="calc-view"></div>
+                        <div className="calc-button-pane">
+                            {numbers}
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Greeting/>, document.getElementById("app"));
      </script>
   </body>
 </html>
