@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>My First React App</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
      <div id="app"></div>
@@ -11,18 +12,48 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
 
      <script type="text/babel">
-        class Greeting extends React.Component {
+        class Calculator extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    currState: props.initialState || 0,
+                    prevState: 0,
+                }
+            }
+
             render() {
+                var numbers = [];
+                for(let i = 0; i < 10; i++) {
+                    numbers.push(<span className="calc-button">{i}</span>);
+                }
+                let zero = numbers.shift();
+                numbers.push(<span className="calc-button">.</span>);
+                numbers.push(zero);
+                numbers.push(<span className="calc-button">=</span>);
+                let functionButtons = [
+                    <span className="calc-button">+</span>,
+                    <span className="calc-button">-</span>,
+                    <span className="calc-button">◄</span>,
+                    <span className="calc-button">C</span>,
+                    <span className="calc-button">×</span>,
+                    <span className="calc-button">÷</span>,
+                    <span className="calc-button">%</span>,
+                    <span className="calc-button">√</span>
+                ];
+                numbers.unshift(functionButtons);
                 return (
-                    <div>
-                        <h1>Hello {this.props.name}</h1>
+                    <div className="calc-body">
+                        <div className="calc-view">{this.state.currState}</div>
+                        <div className="calc-button-pane">
+                            {numbers}
+                        </div>
                     </div>
                 )
             }
         }
 
         ReactDOM.render(
-            <Greeting name="Bloc Student" />, document.getElementById("app")
+            <Calculator initialState="100" />, document.getElementById("app")
         );
      </script>
   </body>

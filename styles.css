@@ -1,0 +1,45 @@
+.calc-body {
+    width: 250px;
+    height: 450px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 1em;
+    overflow: auto;
+    margin: auto;
+}
+
+.calc-view {
+    width: 80%;
+    text-align: right;
+    margin: 1em auto;
+    border: 1px solid black;
+    height: 2em;
+    margin-bottom: 2em;
+    font-size: 1.5em;
+    line-height: 2em;
+    padding-right: 1em;
+}
+
+.calc-button-pane {
+    width: 80%;
+    margin: 1em auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.calc-button {
+    padding: 0.75em 0.75em;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+    margin: 0.5em auto;
+    align-self: auto;
+    cursor: pointer;
+    width: 15px;
+}
+
+.calc-button:hover {
+    background: blue;
+    color: white;
+}
